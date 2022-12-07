@@ -6,64 +6,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NewLaz Blog</title>
     <link rel="stylesheet" href="./assets/css/normalize.css" />
-    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/main-dist.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="header">
-      <div class="wrapper">
-        <h1 class="header__title">Medium</h1>
+      <div class="wrapper wrapper--flex">
+        <h1 class="header__title">NewLaz Blog</h1>
         <div class="header__options">
-          <input type="text" class="header__input" />
           <a href="" class="header__button">Upgrade</a>
-          <img src="" alt="" class="header__image" />
+          <img src="./assets/img/pp.png" alt="" class="header__img" />
         </div>
       </div>
     </header>
-    <nav class="nav">
-      <a href="" class="nav__item nav__item--active">Home</a>
-      <a href="" class="nav__item">2089</a>
-      <a href="" class="nav__item">Culture</a>
-      <a href="" class="nav__item">Tech</a>
-    </nav>
-    <main class="main">
-      <section class="section__lastest-posts" id="lastPostsContainer">
-        <div class="card card--column">
-          <img
-            src="./assets/img/pp-con-fondo.png"
-            alt="newlaz logo"
-            class="card__img"
-          />
-          <h2 class="card__title">Lorem ipsum dolor sit amet.</h2>
-          <p class="card__body"></p>
-          <span class="card__tags"></span>
-        </div>
-        <div class="card card--reverse">
-          <img
-            src="./assets/img/pp-con-fondo.png"
-            alt="newlaz logo"
-            class="card__img"
-          />
-          <h2 class="card__title">Lorem ipsum dolor sit amet.</h2>
-          <p class="card__body"></p>
-          <span class="card__tags"></span>
-        </div>
-      </section>
-      <div class="wrapper">
-        <hr />
-        <section class="section__posts">
-          <div class="card">
-            <img
-              src="./assets/img/pp-con-fondo.png"
-              alt="newlaz logo"
-              class="card__img"
-            />
-            <h2 class="card__title">Lorem ipsum dolor sit amet.</h2>
-            <p class="card__body"></p>
-            <span class="card__tags"></span>
-          </div>
-        </section>
-      </div>
+    <main class="main" id="mainContainer">
+      
     </main>
+
+
+    <!-- HOME COMPONENTS -->
+
+    <template id="homeHeaderTemplate">
+      <a href="" class="header__button">Upgrade</a>
+      <img src="./assets/img/pp.png" alt="" class="header__img" />
+    </template>
+
+    <template id="lastPostsContainerTemplate">
+      <section class="section__lastest-posts" id="lastPostsContainer"></section>
+    </template>
+
+    <template id="homeNavbarTemplate">
+      <nav class="nav">
+        <div class="wrapper wrapper--flex">
+          <a href="" class="nav__item nav__item--active">Home</a>
+          <a href="" class="nav__item">2089</a>
+          <a href="" class="nav__item">Culture</a>
+          <a href="" class="nav__item">Tech</a>
+        </div>
+      </nav>
+    </template>
+
+    <template id="postsContainerTemplate">
+      <div class="wrapper">
+        <hr class="separator" />
+        <section class="section__posts"></section>
+      </div>
+    </template>
+
+    <template id="cardTemplate">
+      <div class="card">
+        <img
+          src="./assets/img/pp-con-fondo.png"
+          alt="newlaz logo"
+          class="card__img"
+        />
+        <div class="card__body">
+          <h2 class="card__title">Lorem ipsum dolor sit amet.</h2>
+          <p class="card__description">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum
+            necessitatibus, ipsum atque dicta nihil sit.
+          </p>
+          <span class="card__tags"></span>
+        </div>
+      </div>
+    </template>
+
+    <!-- LOGIN COMPONENTS -->
 
     <script src="./assets/js/main.js" type="module"></script>
   </body>

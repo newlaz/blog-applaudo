@@ -47,6 +47,7 @@ body {
 .header__img {
   width: 40px;
   height: 40px;
+  -o-object-fit: cover;
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid #000000;
@@ -84,6 +85,7 @@ body {
   gap: 1em;
 }
 .card__img {
+  -o-object-fit: cover;
   object-fit: cover;
   min-width: 100px;
   width: 20%;
@@ -124,6 +126,7 @@ body {
   .section__lastest-posts .card:last-child .card__img {
     height: 50%;
     width: 100%;
+    -o-object-fit: cover;
     object-fit: cover;
   }
   .section__lastest-posts .card:first-child .card__body,
@@ -143,5 +146,3 @@ body {
     flex-direction: row-reverse;
   }
 }
-
-/*# sourceMappingURL=main.css.map */

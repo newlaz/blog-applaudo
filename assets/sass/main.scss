@@ -1,3 +1,155 @@
+@use "variables";
+@use "mixins";
+
 body {
-  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.wrapper {
+  width: min(100% - 2rem, 1000px);
+  margin-inline: auto;
+
+  &--flex {
+    @include mixins.flex(space-between, center, row);
+  }
+}
+
+.separator {
+  border: none;
+  border-bottom: 1px solid variables.$gray;
+}
+
+.main {
+  padding-block: 1em;
+}
+
+.header {
+  padding-block: 1em;
+
+  &__title {
+    font-size: 1.5rem;
+    margin-block: 0;
+  }
+
+  &__options {
+    @include mixins.flex(space-evenly, center, row);
+    gap: 1em;
+  }
+
+  &__button {
+    padding: 0.2em 0.6em;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid variables.$black;
+    border-radius: 0.2em;
+    color: variables.$black;
+  }
+
+  &__img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid variables.$black;
+  }
+}
+
+.nav {
+  &__item {
+    text-decoration: none;
+    color: variables.$secondary-color;
+
+    &--active {
+      font-weight: 600;
+      color: variables.$black;
+    }
+  }
+}
+
+.section__lastest-posts {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+
+  display: grid;
+  gap: 1em;
+}
+
+.section__posts {
+  @include mixins.flex(center, center, column);
+  gap: 1em;
+}
+
+.card {
+  @include mixins.flex(center, center, row);
+  gap: 1em;
+
+  &__img {
+    object-fit: cover;
+    min-width: 100px;
+    width: 20%;
+    height: 100%;
+  }
+
+  &__body {
+    width: 80%;
+  }
+
+  &__title {
+    font-size: 1rem;
+    margin-block: 0;
+  }
+
+  &__description {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    font-size: 0.9rem;
+    font-weight: 200;
+    margin-block: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section__lastest-posts {
+    grid-template-columns: 1.5fr 35% 1fr;
+    grid-template-rows: repeat(3, 110px);
+    justify-content: center;
+
+    .card {
+      height: 100%;
+    }
+
+    .card:first-child,
+    .card:last-child {
+      flex-direction: column;
+
+      .card__img {
+        height: 50%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .card__body {
+        height: 50%;
+      }
+    }
+
+    .card:first-child {
+      grid-area: 1 / 1 / 4 / 2;
+    }
+
+    .card:last-child {
+      grid-area: 1 / 3 / 4 / 4;
+
+      .card__body {
+        width: 100%;
+      }
+    }
+  }
+
+  .card--reverse {
+    flex-direction: row-reverse;
+  }
 }
