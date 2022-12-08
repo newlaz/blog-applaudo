@@ -15,7 +15,7 @@ body {
 
 .separator {
   border: none;
-  border-bottom: 1px solid #b2b2b2;
+  border-bottom: 1px solid #e4e4e4;
 }
 
 .main {
@@ -48,7 +48,7 @@ body {
   width: 40px;
   height: 40px;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
   border: 1px solid #000000;
 }
@@ -59,7 +59,7 @@ body {
 }
 .nav__item--active {
   font-weight: 600;
-  color: #000000;
+  color: #00abb3;
 }
 
 .section__lastest-posts {
@@ -86,7 +86,7 @@ body {
 }
 .card__img {
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   min-width: 100px;
   width: 20%;
   height: 100%;
@@ -109,6 +109,61 @@ body {
   margin-block: 0;
 }
 
+.post__img {
+  display: block;
+  width: min(100% - 2rem, 400px);
+  margin-inline: auto;
+}
+.post__title {
+  color: #00abb3;
+}
+.post__description {
+  font-size: 0.9rem;
+  color: #3c4048;
+}
+.post__button {
+  padding: 0.5em 0.8em;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 0.3em;
+  transition: opacity 0.3s ease;
+}
+.post__button:hover {
+  opacity: 0.7;
+}
+.post__button--blue {
+  background-color: #00abb3;
+  color: #eaeaea;
+}
+.post__button--red {
+  background-color: #ba3631;
+  color: #eaeaea;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1em;
+}
+.form__label, .form__input {
+  display: block;
+}
+.form__label {
+  font-size: 0.9rem;
+}
+.form__input, .form__textarea {
+  padding: 0.3em 0.5em;
+  font-size: 0.8rem;
+  border: none;
+  background-color: #e4e4e4;
+  border-radius: 0.3em;
+}
+.form__textarea {
+  resize: none;
+}
+
 @media screen and (min-width: 768px) {
   .section__lastest-posts {
     grid-template-columns: 1.5fr 35% 1fr;
@@ -127,7 +182,7 @@ body {
     height: 50%;
     width: 100%;
     -o-object-fit: cover;
-    object-fit: cover;
+       object-fit: cover;
   }
   .section__lastest-posts .card:first-child .card__body,
   .section__lastest-posts .card:last-child .card__body {
@@ -146,3 +201,4 @@ body {
     flex-direction: row-reverse;
   }
 }
+
