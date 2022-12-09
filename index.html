@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NewLaz Blog</title>
+    <link rel="shortcut icon" href="./assets/img/pp.png" type="image/x-icon" />
     <link rel="stylesheet" href="./assets/css/normalize.css" />
     <link rel="stylesheet" href="./assets/css/main-dist.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,76 +20,28 @@
       <div class="wrapper wrapper--flex">
         <h1 class="header__title">NewLaz Blog</h1>
         <div class="header__options">
-          <a href="" class="header__button">Upgrade</a>
           <img src="./assets/img/pp.png" alt="" class="header__img" />
         </div>
       </div>
     </header>
     <nav class="nav">
       <div class="wrapper wrapper--flex">
-        <a href="" class="nav__item nav__item--active">Home</a>
-        <a href="" class="nav__item">Post form</a>
+        <a class="nav__item nav__item--active" data-nav-home>Home</a>
+        <a class="nav__item" data-nav-form>Form</a>
       </div>
     </nav>
-    <main class="main" id="mainContainer">
-      <div class="wrapper">
-        <form action="" class="form">
-          <div class="wrapper__input">
-            <label for="postTitle" class="form__label">Post title</label>
-            <input type="text" id="postTitle" class="form__input" />
-          </div>
-          <div class="wrapper__input">
-            <label for="postImgUrl" class="form__label">Image URL</label>
-            <input type="text" id="postImgUrl" class="form__input" />
-          </div>
-          <div class="wrapper__input">
-            <label for="postTags" class="form__label">Tags</label>
-            <input
-              type="text"
-              id="postTags"
-              placeholder="Tag, tag, tag, tag."
-              class="form__input"
-            />
-          </div>
-          <div class="wrapper__input">
-            <label for="description" class="form__label">Description</label>
-            <textarea
-              name=""
-              id="description"
-              class="form__textarea"
-            ></textarea>
-          </div>
-          <button class="post__button post__button--blue">Save</button>
-        </form>
-      </div>
-    </main>
+    <main class="main" id="mainContainer"></main>
 
     <!-- HOME COMPONENTS -->
-
-    <template id="homeHeaderTemplate">
-      <a href="" class="header__button">Upgrade</a>
-      <img src="./assets/img/pp.png" alt="" class="header__img" />
-    </template>
 
     <template id="lastPostsContainerTemplate">
       <section class="section__lastest-posts" id="lastPostsContainer"></section>
     </template>
 
-    <template id="homeNavbarTemplate">
-      <nav class="nav">
-        <div class="wrapper wrapper--flex">
-          <a href="" class="nav__item nav__item--active">Home</a>
-          <a href="" class="nav__item">2089</a>
-          <a href="" class="nav__item">Culture</a>
-          <a href="" class="nav__item">Tech</a>
-        </div>
-      </nav>
-    </template>
-
     <template id="postsContainerTemplate">
       <div class="wrapper">
         <hr class="separator" />
-        <section class="section__posts"></section>
+        <section class="section__posts" id="allPostsContainer"></section>
       </div>
     </template>
 
@@ -98,6 +51,7 @@
           <div class="post">
             <img src="./assets/img/pp-con-fondo.png" class="post__img" />
             <h2 class="post__title">Post Title</h2>
+            <p class="post__tags"></p>
             <p class="post__description">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
               tempore repudiandae iure similique eum? Vitae deserunt nostrum a
@@ -106,10 +60,77 @@
             </p>
           </div>
           <div class="post__buttons">
-            <button class="post__button post__button--red">Delete</button>
-            <button class="post__button post__button--blue">Edit</button>
+            <button
+              class="post__button post__button--red"
+              data-form-delete
+              data-post-id
+            >
+              Delete
+            </button>
+            <button
+              class="post__button post__button--blue"
+              data-form-edit
+              data-post-id
+            >
+              Edit
+            </button>
           </div>
         </section>
+      </div>
+    </template>
+
+    <template id="formPostTemplate">
+      <div class="wrapper">
+        <form class="form">
+          <div class="wrapper__input">
+            <label for="postTitle" class="form__label">Post title</label>
+            <input
+              type="text"
+              id="postTitle"
+              class="form__input"
+              data-input-title
+              required
+            />
+          </div>
+          <div class="wrapper__input">
+            <label for="postImgUrl" class="form__label">Image URL</label>
+            <input
+              type="text"
+              id="postImgUrl"
+              class="form__input"
+              data-input-image
+              required
+            />
+          </div>
+          <div class="wrapper__input">
+            <label for="postTags" class="form__label">Tags</label>
+            <input
+              type="text"
+              id="postTags"
+              placeholder="Tag, tag, tag, tag."
+              class="form__input"
+              data-input-tags
+              required
+            />
+          </div>
+          <div class="wrapper__input">
+            <label for="description" class="form__label">Description</label>
+            <textarea
+              name=""
+              id="description"
+              class="form__textarea"
+              data-input-description
+              required
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="post__button post__button--blue"
+            data-form-save
+          >
+            Save
+          </button>
+        </form>
       </div>
     </template>
 
@@ -117,11 +138,11 @@
       <article class="card">
         <img
           src="./assets/img/pp-con-fondo.png"
-          alt="newlaz logo"
+          alt="Post Image"
           class="card__img"
         />
         <div class="card__body">
-          <h2 class="card__title">Lorem ipsum dolor sit amet.</h2>
+          <h2 class="card__title" data-post-id data-post-reference>Lorem ipsum dolor sit amet.</h2>
           <p class="card__description">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum
             necessitatibus, ipsum atque dicta nihil sit.
@@ -130,8 +151,6 @@
         </div>
       </article>
     </template>
-
-    <!-- LOGIN COMPONENTS -->
 
     <script src="./assets/js/main.js" type="module"></script>
   </body>

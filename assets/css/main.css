@@ -12,6 +12,14 @@ body {
   align-items: center;
   flex-direction: row;
 }
+.wrapper__input {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5em;
+  width: 100%;
+}
 
 .separator {
   border: none;
@@ -52,9 +60,18 @@ body {
   border: 1px solid #000000;
 }
 
+.nav .wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 1em;
+}
 .nav__item {
+  text-transform: uppercase;
   text-decoration: none;
   color: #3c4048;
+  cursor: pointer;
 }
 .nav__item--active {
   font-weight: 600;
@@ -95,6 +112,11 @@ body {
 .card__title {
   font-size: 1rem;
   margin-block: 0;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.card__title:hover {
+  color: #00abb3;
 }
 .card__description {
   overflow: hidden;
@@ -105,6 +127,13 @@ body {
   font-size: 0.9rem;
   font-weight: 200;
   margin-block: 0;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+.card__tags {
+  font-weight: 200;
+  font-size: 0.6rem;
+  text-transform: uppercase;
 }
 
 .post__img {
@@ -149,16 +178,19 @@ body {
   display: block;
 }
 .form__label {
+  font-weight: 600;
   font-size: 0.9rem;
 }
 .form__input, .form__textarea {
-  padding: 0.3em 0.5em;
+  width: 100%;
+  padding: 0.7em 0.5em;
   font-size: 0.8rem;
   border: none;
   background-color: #e4e4e4;
   border-radius: 0.3em;
 }
 .form__textarea {
+  height: 9rem;
   resize: none;
 }
 
@@ -194,7 +226,7 @@ body {
   .section__lastest-posts .card:last-child .card__body {
     width: 100%;
   }
-  .card--reverse {
+  .section__posts .card {
     flex-direction: row-reverse;
   }
 }

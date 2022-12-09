@@ -12,6 +12,12 @@ body {
   &--flex {
     @include mixins.flex(space-between, center, row);
   }
+
+  &__input {
+    @include mixins.flex(center, flex-start, column);
+    gap: 0.5em;
+    width: 100%;
+  }
 }
 
 .separator {
@@ -55,9 +61,16 @@ body {
 }
 
 .nav {
+  .wrapper {
+    @include mixins.flex(flex-start, center, row);
+    gap: 1em;
+  }
+
   &__item {
+    text-transform: uppercase;
     text-decoration: none;
     color: variables.$secondary-color;
+    cursor: pointer;
 
     &--active {
       font-weight: 600;
@@ -97,6 +110,12 @@ body {
   &__title {
     font-size: 1rem;
     margin-block: 0;
+    transition: color 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: variables.$primary-color;
+    }
   }
 
   &__description {
@@ -108,6 +127,14 @@ body {
     font-size: 0.9rem;
     font-weight: 200;
     margin-block: 0;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+
+  &__tags {
+    font-weight: 200;
+    font-size: 0.6rem;
+    text-transform: uppercase;
   }
 }
 
@@ -160,12 +187,14 @@ body {
   }
 
   &__label {
+    font-weight: 600;
     font-size: 0.9rem;
   }
 
   &__input,
   &__textarea {
-    padding: 0.3em 0.5em;
+    width: 100%;
+    padding: 0.7em 0.5em;
     font-size: 0.8rem;
     border: none;
     background-color: variables.$gray;
@@ -173,6 +202,7 @@ body {
   }
 
   &__textarea {
+    height: 9rem;
     resize: none;
   }
 }
@@ -215,7 +245,9 @@ body {
     }
   }
 
-  .card--reverse {
-    flex-direction: row-reverse;
+  .section__posts {
+    .card {
+      flex-direction: row-reverse;
+    }
   }
 }
