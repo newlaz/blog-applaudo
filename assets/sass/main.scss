@@ -58,6 +58,30 @@ body {
     border-radius: 50%;
     border: 1px solid variables.$black;
   }
+
+  .fa-solid {
+    @include mixins.flex(center, center, row);
+    background-color: variables.$primary-color;
+    color: variables.$white;
+  }
+
+  &__searchbar {
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    overflow: hidden;
+    border-radius: 0.3em;
+  }
+
+  &__input {
+    padding: 0.5em;
+    font-size: 0.8rem;
+    background-color: variables.$gray;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .nav {

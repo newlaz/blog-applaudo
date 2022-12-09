@@ -60,6 +60,29 @@ body {
   border-radius: 50%;
   border: 1px solid #000000;
 }
+.header .fa-solid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: #00abb3;
+  color: #eaeaea;
+}
+.header__searchbar {
+  display: grid;
+  grid-template-columns: 15% 1fr;
+  overflow: hidden;
+  border-radius: 0.3em;
+}
+.header__input {
+  padding: 0.5em;
+  font-size: 0.8rem;
+  background-color: #e4e4e4;
+  border: none;
+}
+.header__input:focus {
+  outline: none;
+}
 
 .nav .wrapper {
   display: flex;

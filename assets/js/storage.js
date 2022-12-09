@@ -25,3 +25,13 @@ export function getPostById(postId) {
 
   return posts[postIndex];
 }
+
+export function getPostByTitle(postTitle) {
+  const posts = getPosts();
+
+  const postsFiltered = posts.filter((post) =>
+    post.title.toLowerCase().trim().includes(postTitle.toLowerCase().trim())
+  );
+
+  return postsFiltered;
+}

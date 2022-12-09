@@ -14,12 +14,28 @@
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;600;700;900&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/c60c05e512.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header class="header">
       <div class="wrapper wrapper--flex">
-        <h1 class="header__title">NewLaz Blog</h1>
+        <h1 class="header__title">Blog</h1>
         <div class="header__options">
+          <div class="header__searchbar">
+            <label
+              for="inputSearch"
+              class="fa-solid fa-magnifying-glass"
+            ></label>
+            <input
+              type="text"
+              class="header__input"
+              id="inputSearch"
+              data-search-input
+            />
+          </div>
           <img src="./assets/img/pp.png" alt="" class="header__img" />
         </div>
       </div>
@@ -49,7 +65,11 @@
       <div class="wrapper">
         <section class="section__view-post">
           <div class="post">
-            <img src="./assets/img/pp-con-fondo.png" class="post__img" />
+            <img
+              src="./assets/img/pp-con-fondo.png"
+              class="post__img"
+              alt="Post Image"
+            />
             <h2 class="post__title">Post Title</h2>
             <p class="post__tags"></p>
             <p class="post__description">
@@ -142,7 +162,9 @@
           class="card__img"
         />
         <div class="card__body">
-          <h2 class="card__title" data-post-id data-post-reference>Lorem ipsum dolor sit amet.</h2>
+          <h2 class="card__title" data-post-id data-post-reference>
+            Lorem ipsum dolor sit amet.
+          </h2>
           <p class="card__description">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum
             necessitatibus, ipsum atque dicta nihil sit.
