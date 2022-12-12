@@ -123,26 +123,25 @@ export const FormPageState = function () {
     $("[data-nav-form]").classList.add("nav__item--active");
     $("[data-nav-home]").classList.remove("nav__item--active");
 
-    const formTemplate = $("#formPostTemplate").content;
-    $("[data-input-title]", formTemplate).value = "";
-    $("[data-input-image]", formTemplate).value = "";
-    $("[data-input-tags]", formTemplate).value = "";
-    $("[data-input-description]", formTemplate).textContent = "";
+    $("#mainContainer").appendChild(this.completeFormFields());
+  };
 
-    $("#mainContainer").appendChild(formTemplate.cloneNode(true));
+  this.completeFormFields = function (post = {}) {
+    const formTemplate = $("#formPostTemplate").content;
+
+    $("[data-input-title]", formTemplate).value = post.title || "";
+    $("[data-input-image]", formTemplate).value = post.img || "";
+    $("[data-input-tags]", formTemplate).value = post.tags || "";
+    $("[data-input-description]", formTemplate).textContent =
+      post.description || "";
+
+    return formTemplate.cloneNode(true);
   };
 
   this.editPost = function (postId) {
-    const post = getPostById(postId);
-
-    const formTemplate = $("#formPostTemplate").content;
-
-    $("[data-input-title]", formTemplate).value = post.title;
-    $("[data-input-image]", formTemplate).value = post.img;
-    $("[data-input-tags]", formTemplate).value = post.tags;
-    $("[data-input-description]", formTemplate).textContent = post.description;
-
-    $("#mainContainer").appendChild(formTemplate.cloneNode(true));
+    $("#mainContainer").appendChild(
+      this.completeFormFields(getPostById(postId))
+    );
   };
 
   this.savePost = function (post) {
