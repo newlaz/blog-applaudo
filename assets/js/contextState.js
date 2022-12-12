@@ -39,12 +39,7 @@ export const PageState = function () {
   };
 
   this.displaySearchPosts = function (postTitle) {
-    if (postTitle !== "") {
-      currentState.displaySearchPosts(postTitle);
-      return;
-    }
-
-    currentState.displayView();
+    currentState.displaySearchPosts(postTitle);
   };
 };
 
@@ -63,34 +58,31 @@ export const HomePageState = function () {
     const postsContainerTemplate = $("#postsContainerTemplate").content;
     $("#allPostsContainer", postsContainerTemplate).innerHTML = "";
 
-    const cardTemplate = $("#cardTemplate").content;
-
     this.lastPosts(getPosts()).forEach((post) => {
-      $(".card__img", cardTemplate).setAttribute("src", post.img);
-      $(".card__title", cardTemplate).textContent = post.title;
-      $(".card__title", cardTemplate).setAttribute("data-post-id", post.id);
-      $(".card__description", cardTemplate).textContent = post.description;
-      $(".card__tags", cardTemplate).textContent = post.tags;
-
       $("#lastPostsContainer", lastPostsContainerTemplate).appendChild(
-        cardTemplate.cloneNode(true)
+        this.createCard(post)
       );
     });
 
     this.remainingPosts(getPosts()).forEach((post) => {
-      $(".card__img", cardTemplate).setAttribute("src", post.img);
-      $(".card__title", cardTemplate).textContent = post.title;
-      $(".card__title", cardTemplate).setAttribute("data-post-id", post.id);
-      $(".card__description", cardTemplate).textContent = post.description;
-      $(".card__tags", cardTemplate).textContent = post.tags;
-
       $("#allPostsContainer", postsContainerTemplate).appendChild(
-        cardTemplate.cloneNode(true)
+        this.createCard(post)
       );
     });
 
     $("#mainContainer").appendChild(lastPostsContainerTemplate.cloneNode(true));
     $("#mainContainer").appendChild(postsContainerTemplate.cloneNode(true));
+  };
+
+  this.createCard = function (post) {
+    const cardTemplate = $("#cardTemplate").content;
+    $(".card__img", cardTemplate).setAttribute("src", post.img);
+    $(".card__title", cardTemplate).textContent = post.title;
+    $(".card__title", cardTemplate).setAttribute("data-post-id", post.id);
+    $(".card__description", cardTemplate).textContent = post.description;
+    $(".card__tags", cardTemplate).textContent = post.tags;
+
+    return cardTemplate.cloneNode(true);
   };
 
   this.lastPosts = function (posts) {
@@ -106,21 +98,20 @@ export const HomePageState = function () {
   };
 
   this.displaySearchPosts = function (postTitle) {
+    if (postTitle === "") {
+      this.displayView();
+      return;
+    }
+
     const postsContainerTemplate = $("#postsContainerTemplate").content;
     $("#allPostsContainer", postsContainerTemplate).innerHTML = "";
 
-    const cardTemplate = $("#cardTemplate").content;
     getPostByTitle(postTitle).forEach((post) => {
-      $(".card__img", cardTemplate).setAttribute("src", post.img);
-      $(".card__title", cardTemplate).textContent = post.title;
-      $(".card__title", cardTemplate).setAttribute("data-post-id", post.id);
-      $(".card__description", cardTemplate).textContent = post.description;
-      $(".card__tags", cardTemplate).textContent = post.tags;
-
       $("#allPostsContainer", postsContainerTemplate).appendChild(
-        cardTemplate.cloneNode(true)
+        this.createCard(post)
       );
     });
+
     $("#mainContainer").innerHTML = "";
     $("#mainContainer").appendChild(postsContainerTemplate.cloneNode(true));
   };
